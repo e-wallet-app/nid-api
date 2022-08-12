@@ -44,14 +44,17 @@ public class NidInfo {
     @Column(name = "date_of_birth")
     private String dateOfBirth;
 
-    @Column(name = "national_id_number")
-    private String nationalIdNumber;
+    @Column(name = "nid_number")
+    private String nidNumber;
 
-    @Column(name = "old_national_id_number")
-    private String oldNationalIdNumber;
+    @Column(name = "old_nid_number")
+    private String oldNidNumber;
 
     @Column(name = "phone_number")
     private String phoneNumber;
+
+    @Column(name = "blood_group")
+    private String bloodGroup;
 
     @Column(name = "photo_url")
     private String photoUrl;
