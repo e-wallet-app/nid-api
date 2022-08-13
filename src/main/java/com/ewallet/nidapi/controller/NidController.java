@@ -32,4 +32,10 @@ public class NidController {
         KycNidResponse kycNidResponse = nidInfoService.kycNidPerson(nidRequest);
         return ResponseEntity.ok(kycNidResponse);
     }
+
+    @PostMapping(value = "/verification/autofill")
+    public ResponseEntity<NidAutofillResponse> nidAutofill(@RequestBody NidAutofillRequest nidRequest) {
+        NidAutofillResponse nidResponse = nidInfoService.nidAutofill(nidRequest);
+        return ResponseEntity.ok(nidResponse);
+    }
 }
