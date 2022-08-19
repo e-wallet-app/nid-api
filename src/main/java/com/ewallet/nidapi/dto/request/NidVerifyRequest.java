@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class KycNidRequest {
+public class NidVerifyRequest {
 
     private String fullName;
 
