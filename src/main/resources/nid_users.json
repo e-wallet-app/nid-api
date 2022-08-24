@@ -1,0 +1,48 @@
+[
+  {
+    "fullName": "Kaisar Khalil",
+    "fatherName": "Sofdar Kha",
+    "motherName": "Amena Begum",
+    "spouseName": "Sokhina Banu",
+    "dateOfBirth": "01 Jan 1976",
+    "gender": "male",
+    "profession": "shopkeeper",
+    "presentAddress": "322/2, Gulbagh, Malibagh, 1217",
+    "permanentAddress": "Madar Bari, Chittagong, Chittagong, 4000",
+    "nidNumber": "3852939068",
+    "oldNidNumber": "1976385293906870",
+    "phoneNumber": "+8801715259060",
+    "bloodGroup": "O+",
+    "photoUrl": "https://image.shutterstock.com/image-photo/bangladesh-rangpur-august-31-2021-600w-2038174847.jpg"
+  },
+  {
+    "fullName": "Md. Nasir Uddin",
+    "fatherName": "Anis Uddin Bepari",
+    "motherName": "Rohima Begum",
+    "dateOfBirth": "23 July 1977",
+    "gender": "male",
+    "profession": "Private Job",
+    "presentAddress": "233, Noatola Pagla Majar, Ramna, Dhaka",
+    "permanentAddress": "233, Noatola Pagla Majar, Ramna, Dhaka",
+    "nidNumber": "3512639060",
+    "oldNidNumber": "1977351263906070",
+    "phoneNumber": "+8801825159000",
+    "bloodGroup": "AB-",
+    "photoUrl": "https://image.shutterstock.com/image-photo/bangladesh-rangpur-august-31-2021-600w-2038174847.jpg"
+  },
+  {
+    "fullName": "Ahmed Rakib",
+    "fatherName": "Md. Abdul Fojol",
+    "motherName": "Mahmuda Fojol",
+    "dateOfBirth": "06 August 1968",
+    "gender": "male",
+    "profession": "Doctor",
+    "presentAddress": "179 Noatola, Mogbazar, Ramna, Dhaka",
+    "permanentAddress": "179 Noatola, Mogbazar, Ramna, Dhaka",
+    "nidNumber": "4352639781",
+    "oldNidNumber": "1968351263906070",
+    "phoneNumber": "+8801515151515",
+    "bloodGroup": "B+",
+    "photoUrl": "https://image.shutterstock.com/image-photo/bangladesh-rangpur-august-31-2021-600w-2038174847.jpg"
+  }
+]
