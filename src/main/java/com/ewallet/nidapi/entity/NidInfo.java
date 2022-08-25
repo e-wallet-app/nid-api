@@ -4,20 +4,18 @@ package com.ewallet.nidapi.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
-@Table(name = "nid_users")
-public class User {
+@Table(name = "nid_infos")
+public class NidInfo {
 
     @Id
-    @Column(name = "id")
-    private String id;
+    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     @Column(name = "full_name")
     private String fullName;
@@ -46,11 +44,17 @@ public class User {
     @Column(name = "date_of_birth")
     private String dateOfBirth;
 
-    @Column(name = "national_id_number")
-    private String nationalIdNumber;
+    @Column(name = "nid_number")
+    private String nidNumber;
 
-    @Column(name = "old_national_id_number")
-    private String oldNationalIdNumber;
+    @Column(name = "old_nid_number")
+    private String oldNidNumber;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Column(name = "blood_group")
+    private String bloodGroup;
 
     @Column(name = "photo_url")
     private String photoUrl;
