@@ -35,5 +35,7 @@ public class NidInfoRequest {
 
     private String phoneNumber;
 
+    private String bloodGroup;
+
     private String photoUrl;
 }

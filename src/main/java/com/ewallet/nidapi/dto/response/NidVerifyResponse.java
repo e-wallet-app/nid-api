@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class KycNidResponse {
+public class NidVerifyResponse {
 
     private String status;
 
