@@ -14,20 +14,21 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RequestMapping(value = "/api/v1")
 public interface NidController {
 
     @PostMapping(value = "/add")
-    ResponseEntity<NidInfo> add(@RequestBody NidInfoRequest nidInfoRequest);
+    ResponseEntity<NidInfo> add(@Valid @RequestBody NidInfoRequest nidInfoRequest);
 
     @GetMapping(value = "/")
     ResponseEntity<List<NidInfoResponse>> list();
 
     @PostMapping(value = "/verify")
-    ResponseEntity<NidVerifyResponse> verify(@RequestBody NidVerifyRequest nidRequest);
+    ResponseEntity<NidVerifyResponse> verify(@Valid @RequestBody NidVerifyRequest nidRequest);
 
     @PostMapping(value = "/autofill")
-    ResponseEntity<NidAutofillResponse> autofill(@RequestBody NidAutofillRequest nidRequest);
+    ResponseEntity<NidAutofillResponse> autofill(@Valid @RequestBody NidAutofillRequest nidRequest);
 }

@@ -60,7 +60,11 @@ public class GlobalExceptionHandler {
     private ResponseEntity<Object> getValidationErrorResponse(BindException e, String message) {
         ErrorResponse response = new ErrorResponse(VALIDATION_ERROR, message);
         List<ItemValidationError> validationErrors = new ArrayList<>();
-        e.getBindingResult().getFieldErrors().forEach((v) -> validationErrors.add(new ItemValidationError(v.getObjectName(), v.getField(), v.getRejectedValue(), v.getDefaultMessage())));
+        e.getBindingResult().getFieldErrors().forEach(v -> {
+            if (validationErrors.stream().noneMatch(x -> x.getField().equals(v.getField()))) {
+                validationErrors.add(new ItemValidationError(v.getObjectName(), v.getField(), v.getRejectedValue(), v.getDefaultMessage()));
+            }
+        });
         response.setErrorItems(validationErrors);
         this.printStackTrace(e);
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
