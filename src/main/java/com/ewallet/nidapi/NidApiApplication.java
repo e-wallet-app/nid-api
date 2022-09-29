@@ -14,8 +14,7 @@ public class NidApiApplication {
         SpringApplication.run(NidApiApplication.class, args);
     }
 
-
-   @Bean
+    @Bean
     CommandLineRunner runner(InitializeData initializeData) {
         return args -> initializeData.initialize();
     }

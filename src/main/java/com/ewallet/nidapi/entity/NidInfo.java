@@ -6,9 +6,9 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Entity
 @Getter
 @Setter
+@Entity
 @Table(name = "nid_infos")
 public class NidInfo {
 

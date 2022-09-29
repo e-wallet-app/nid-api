@@ -7,24 +7,29 @@ import com.ewallet.nidapi.dto.response.NidVerifyResponse;
 import com.ewallet.nidapi.dto.response.NidAutofillResponse;
 import com.ewallet.nidapi.dto.response.NidInfoResponse;
 import com.ewallet.nidapi.entity.NidInfo;
+import com.ewallet.nidapi.exeption.DuplicateEntryException;
+import com.ewallet.nidapi.exeption.NotFoundException;
 import com.ewallet.nidapi.repository.NidInfoRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@AllArgsConstructor
 @Service
 public class NidInfoServiceImpl implements NidInfoService{
 
     private final NidInfoRepository nidRepository;
 
-    public NidInfoServiceImpl(NidInfoRepository nidRepository) {
-        this.nidRepository = nidRepository;
-    }
-
     @Override
     public NidInfo create(NidInfoRequest nidInfoRequest) {
+        nidRepository.findByNidNumberOrOldNidNumberOrPhoneNumber(nidInfoRequest.getNidNumber(), nidInfoRequest.getOldNidNumber(), nidInfoRequest.getPhoneNumber())
+            .ifPresent(entry -> {
+                throw new DuplicateEntryException("User already exists");
+            });
         NidInfo nidInfo = new NidInfo();
         BeanUtils.copyProperties(nidInfoRequest, nidInfo);
         return nidRepository.save(nidInfo);
@@ -37,17 +42,13 @@ public class NidInfoServiceImpl implements NidInfoService{
         String dateOfBirth = nidVerifyRequest.getDateOfBirth();
         boolean matchName = nidVerifyRequest.isMatchName();
 
-        NidInfo nidInfo;
         if(matchName)
-            nidInfo = nidRepository.findByFullNameAndDateOfBirthAndNidNumber(fullName, dateOfBirth, nidNumber).orElse(null);
+            nidRepository.findByFullNameAndDateOfBirthAndNidNumber(fullName, dateOfBirth, nidNumber).orElseThrow(() -> new NotFoundException("NID information Not Found"));
         else
-            nidInfo = nidRepository.findByDateOfBirthAndNidNumber(dateOfBirth, nidNumber).orElse(null);
+            nidRepository.findByDateOfBirthAndNidNumber(dateOfBirth, nidNumber).orElseThrow(() -> new NotFoundException("NID information Not Found"));
 
-        if (nidInfo != null) {
-            return new NidVerifyResponse("200", "NID information Found.");
-        } else {
-            return new NidVerifyResponse("404", "NID information Not Found.");//dynamically send the field name
-        }
+        return new NidVerifyResponse(HttpStatus.OK.name(), "NID information found");
+
     }
 
     @Override
@@ -55,12 +56,10 @@ public class NidInfoServiceImpl implements NidInfoService{
         String nidNumber = nidAutofillRequest.getNidNumber();
         String dateOfBirth = nidAutofillRequest.getDateOfBirth();
 
-        NidInfo nidInfo = nidRepository.findByDateOfBirthAndNidNumber(dateOfBirth, nidNumber).orElse(null);
+        NidInfo nidInfo = nidRepository.findByDateOfBirthAndNidNumber(dateOfBirth, nidNumber).orElseThrow(() -> new NotFoundException("NID information Not Found"));
 
         NidAutofillResponse nidResponse = new NidAutofillResponse();
-        if(nidInfo != null) {
-            BeanUtils.copyProperties(nidInfo, nidResponse);
-        }
+        BeanUtils.copyProperties(nidInfo, nidResponse);
 
         return nidResponse;
     }

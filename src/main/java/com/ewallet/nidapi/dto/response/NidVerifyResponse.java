@@ -1,17 +1,14 @@
 package com.ewallet.nidapi.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NonNull;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
+@Data
 public class NidVerifyResponse {
 
+    @NonNull
     private String status;
 
+    @NonNull
     private String message;
 }

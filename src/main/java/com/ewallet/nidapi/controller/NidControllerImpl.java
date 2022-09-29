@@ -7,20 +7,18 @@ import com.ewallet.nidapi.dto.response.NidVerifyResponse;
 import com.ewallet.nidapi.dto.response.NidAutofillResponse;
 import com.ewallet.nidapi.dto.response.NidInfoResponse;
 import com.ewallet.nidapi.entity.NidInfo;
-import com.ewallet.nidapi.service.NidInfoServiceImpl;
+import com.ewallet.nidapi.service.NidInfoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
+@RequiredArgsConstructor
 @RestController
 public class NidControllerImpl implements NidController {
 
-    private final NidInfoServiceImpl nidInfoService;
-
-    public NidControllerImpl(NidInfoServiceImpl nidInfoService) {
-        this.nidInfoService = nidInfoService;
-    }
+    private final NidInfoService nidInfoService;
 
     @Override
     public ResponseEntity<NidInfo> add(NidInfoRequest nidInfoRequest) {

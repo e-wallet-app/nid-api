@@ -8,4 +8,5 @@ import java.util.Optional;
 public interface NidInfoRepository extends JpaRepository<NidInfo, String> {
     Optional<NidInfo> findByDateOfBirthAndNidNumber(String dateOfBirth, String nidNumber);
     Optional<NidInfo> findByFullNameAndDateOfBirthAndNidNumber(String fullName, String dateOfBirth, String nidNumber);
+    Optional<NidInfo> findByNidNumberOrOldNidNumberOrPhoneNumber(String nidNumber, String oldNidNumber, String phoneNumber);
 }
